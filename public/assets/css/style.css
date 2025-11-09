@@ -13,8 +13,8 @@ body {
     width: 100vw;
     background-color: var(--primarybg);
     margin: 0rem;
-    overflow-y: hidden; /* disable vertical scrolling */
-    overflow-x: hidden; /* horizontal movement handled via drag, not scrollbar */
+    overflow-y: hidden; 
+    overflow-x: hidden; 
 }
 
 #image-track {
@@ -43,7 +43,6 @@ body {
 }
 
 
-/* -- YouTube Link Styles -- */
 
 body.menu-toggled>.meta-link>span {
     color: rgb(30, 30, 30);
@@ -63,6 +62,7 @@ body.menu-toggled>.meta-link>span {
 
 .meta-link {
     align-items: center;
+    -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -107,6 +107,7 @@ body.menu-toggled>.meta-link>span {
     width: calc(100% - 40px);
     box-sizing: border-box;
     background: transparent;
+    -webkit-backdrop-filter: blur(5.5px);
     backdrop-filter: blur(5.5px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
@@ -394,13 +395,89 @@ body.menu-toggled>.meta-link>span {
         transform: translate(0%, -50%);
     }
     .image-container {
-        width: 55vmin;
-        height: 78vmin;
+        width: 45vmin;
+        height: 70vmin;
     }
     .explore {
         right: 40%;
         bottom: 32px;
     }
+
+    .navbar-links {
+        display: none;
+    }
+    
+    /* Ensure sidebar is visible in mobile but starts off-screen */
+    .sidebars {
+        display: block;
+    }
+
+    .toggle {
+        display: flex !important; /* Show the toggle menu */
+        position: fixed;
+        right: 20px;
+        top: 20px;
+    }
+
+    #checkbox {
+        display: none;
+    }
+
+.toggle {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition-duration: .5s;
+  
+}
+
+.bars {
+  width: 100%;
+  height: 4px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+}
+
+#bar2 {
+  transition-duration: .8s;
+}
+
+#bar1,#bar3 {
+  width: 100%;
+}
+
+#checkbox:checked + .toggle .bars {
+  position: absolute;
+  transition-duration: .5s;
+}
+
+#checkbox:checked + .toggle #bar2 {
+  transform: scaleX(0);
+  transition-duration: .5s;
+}
+
+#checkbox:checked + .toggle #bar1 {
+  width: 100%;
+  transform: rotate(45deg);
+  transition-duration: .5s;
+}
+
+#checkbox:checked + .toggle #bar3 {
+  width: 100%;
+  transform: rotate(-45deg);
+  transition-duration: .5s;
+}
+
+#checkbox:checked + .toggle {
+  transition-duration: .5s;
+  transform: rotate(180deg);
+}
 }
 
 @media (max-width: 768px) {
@@ -421,8 +498,8 @@ body.menu-toggled>.meta-link>span {
         transform: translate(0%, -50%);
     }
     .image-container {
-        width: 65vmin;
-        height: 90vmin;
+        width: 45vmin;
+        height: 70vmin;
     }
     .image-info {
         padding: 1rem;
@@ -432,3 +509,127 @@ body.menu-toggled>.meta-link>span {
         bottom: 28px;
     }
 }
+
+/* nav-system */
+
+.navbar-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 35px;
+}
+   .logo-image{
+    width: 60px;
+    height: 55px;
+   }
+
+   .sidebars {
+     position: fixed;
+     top: 0;
+     right: -300px; /* Start off-screen */
+     width: 300px;
+     height: 100vh;
+     background-color: rgba(0, 0, 0, 0.9);
+     padding: 80px 40px;
+     transition: right 0.3s ease-in-out;
+     z-index: 998;
+   }
+
+   #checkbox:checked ~ .sidebars {
+     right: 0; /* Slide in when checkbox is checked */
+   }
+
+   .navbar-links {
+    display: flex;
+    list-style: none;
+    
+    
+   }
+
+   .navbar-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 20px;
+    list-style: none;
+   }
+
+   .sidebars li {
+    margin-bottom: 20px;
+   }
+
+   .sidebars a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: block;
+   }
+
+   .sidebars a:hover {
+    color: #666;
+   }
+
+   /* From Uiverse.io by vinodjangid07 */ 
+#checkbox {
+  display: none;
+}
+
+.toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition-duration: .5s;
+  
+}
+
+.bars {
+  width: 100%;
+  height: 4px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+}
+
+#bar2 {
+  transition-duration: .8s;
+}
+
+#bar1,#bar3 {
+  width: 100%;
+}
+
+#checkbox:checked + .toggle .bars {
+  position: absolute;
+  transition-duration: .5s;
+}
+
+#checkbox:checked + .toggle #bar2 {
+  transform: scaleX(0);
+  transition-duration: .5s;
+}
+
+#checkbox:checked + .toggle #bar1 {
+  width: 100%;
+  transform: rotate(45deg);
+  transition-duration: .5s;
+}
+
+#checkbox:checked + .toggle #bar3 {
+  width: 100%;
+  transform: rotate(-45deg);
+  transition-duration: .5s;
+}
+
+#checkbox:checked + .toggle {
+  transition-duration: .5s;
+  transform: rotate(180deg);
+}
+
