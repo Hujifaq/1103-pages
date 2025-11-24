@@ -299,6 +299,10 @@ img {
         margin-left: 3.5rem;
         margin-right: 0rem;
     }
+
+        #search-container {
+             margin-top: 150px;
+         }
 }
 
 /* Responsive Dropdown at 944px */

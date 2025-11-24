@@ -43,6 +43,7 @@ body {
     padding: 100px 0;
     position: relative;
     z-index: 1;
+   
 }
 
 .normal-heading{
@@ -656,8 +657,30 @@ div.tp-dfwv {
 }
 
 
-@media (max-width: 1200px) {
 
+@media (max-width: 1200px) , (max-width: 768px) {
+    .subline-header {
+            width: 100%;
+            padding: 300px 0;
+            padding-top:30px;
+            position: relative;
+            z-index: 1;
+            background: transparent;
+        }
+
+    .hero-title{
+
+        font-size: 10vw;
+        justify-content: center;
+        text-align: center;
+        padding-top: 300px;
+    }
+
+    .subline-heading{
+        font-size: 3vw;
+        position: relative;
+        
+    }
 }
 
 @media (max-width: 1161px) {
@@ -798,5 +821,7 @@ section.spotlight {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+ 
 }
+/* endspotlight */
+
