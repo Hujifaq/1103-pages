@@ -24,7 +24,7 @@ const authorDatabase = {
     ig: "@phurichaya"
   },
   "Natapat": {
-    photo: "https://ui-avatars.com/api/?name=Natapat&background=random&size=200",
+    photo: "../assets/images/authors/Natapat.png",
     email: "natapat@example.com",
     tel: "1555555",
     ig: "@natapat"
